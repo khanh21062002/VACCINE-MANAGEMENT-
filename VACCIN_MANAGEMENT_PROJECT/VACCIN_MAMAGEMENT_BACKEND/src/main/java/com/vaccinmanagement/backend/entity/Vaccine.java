@@ -25,6 +25,9 @@ public class Vaccine {
     @Column(name = "number_of_inject", nullable = false, unique = true)
     private int number_of_inject;
 
+    @Column(name = "prevention", nullable = false, length = 255)
+    private String prevention;
+
     @Column(name = "usage",length = 255)
     private String usage;
 

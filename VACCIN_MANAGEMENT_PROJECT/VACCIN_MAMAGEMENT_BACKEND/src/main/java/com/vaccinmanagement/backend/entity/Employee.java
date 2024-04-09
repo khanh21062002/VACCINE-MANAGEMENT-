@@ -15,17 +15,19 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import lombok.Builder;
 
 @Entity
+@Builder
 @Table(name = "employee")
 public class Employee {
 	
 	@Id
 	@Column(name = "employee_id", unique = true)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer employee_id;
+	private int employee_id;
 	
-	@Column(name = "employee_name", length = 256, nullable = false, unique = true)
+	@Column(name = "employee_name", length = 255, nullable = false, unique = true)
 	private String employee_name;
 	
 	@Column(name = "date_of_birth", nullable = false)
@@ -36,23 +38,23 @@ public class Employee {
     @Enumerated(value = EnumType.STRING)
     private Gender gender;
     
-    @Column(name = "phone_number" , length = 10, nullable = false, unique = true)
+    @Column(name = "phone_number" , length = 11, nullable = false, unique = true)
     private String phone_number;
     
     @Column(name = "address_employee", length = 255 , nullable = false, unique = true)
     private String address_employee;
     
-    @Column(name = "email_employee", length = 256, nullable = false, unique = true)
+    @Column(name = "email_employee", length = 255, nullable = false, unique = true)
     private String email_employee;
     
-    @Column(name = "working_place", length = 256, nullable = false, unique = true)
+    @Column(name = "working_place", length = 255)
     private String working_place;
     
     @Column(name = "position")
     @Enumerated(value = EnumType.STRING)
     private Position position;
     
-    @Column(name = "employee_image", nullable = false, length = 255)
+    @Column(name = "employee_image")
     private String employee_image;
     
     public Employee() {
