@@ -1,5 +1,7 @@
 package com.vaccinmanagement.backend.entity;
 
+import com.vaccinmanagement.backend.enums.Gender;
+import com.vaccinmanagement.backend.enums.Status;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -28,6 +30,10 @@ public class VaccineSchedule {
 
     @Column(name = "note", length = 255)
     private String note;
+
+    @Column(name = "status")
+    @Enumerated(value = EnumType.STRING)
+    private Status status;
 
     public VaccineSchedule() {}
 
