@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Vaccine")
+@Table(name = "vaccine")
 public class Vaccine {
 
     @Id
@@ -19,7 +19,7 @@ public class Vaccine {
     private String vaccine_name;
 
     @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
-    @JoinColumn(name = "vaccine_type_ìd",insertable = false, updatable = false)
+    @JoinColumn(name = "vaccine_type_code",insertable = false, updatable = false)
     private VaccineType vaccineType;
 
     @Column(name = "number_of_inject", nullable = false, unique = true)
@@ -34,31 +34,32 @@ public class Vaccine {
     @Column(name = "indication", length = 255)
     private String Indication;
 
-    @Column(name = "Contraindication", length = 255)
+    @Column(name = "contraindication", length = 255)
     private String Contraindication;
 
-    @Column(name = "NextTimeStart")
+    @Column(name = "next_time_start")
     private Date time_of_beginning_next_injection;
 
-    @Column(name = "NextTime")
+    @Column(name = "next_time")
     private Date time_of_ending_next_injection;
 
     @Column(name = "origin", length = 50)
     private String origin;
 
-    @OneToOne(mappedBy = "Vaccine",cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToOne(mappedBy = "vaccine",cascade = CascadeType.ALL,orphanRemoval = true)
     private VaccineSchedule vaccine_schedule;
 
     public Vaccine() {
 
     }
 
-    public Vaccine(String id, boolean active, String vaccine_name, VaccineType vaccineType, int number_of_inject, String usage, String indication, String contraindication, Date time_of_beginning_next_injection, Date time_of_ending_next_injection, String origin, VaccineSchedule vaccine_schedule) {
+    public Vaccine(String id, boolean active, String vaccine_name, VaccineType vaccineType, int number_of_inject, String prevention, String usage, String indication, String contraindication, Date time_of_beginning_next_injection, Date time_of_ending_next_injection, String origin, VaccineSchedule vaccine_schedule) {
         this.id = id;
         this.active = active;
         this.vaccine_name = vaccine_name;
         this.vaccineType = vaccineType;
         this.number_of_inject = number_of_inject;
+        this.prevention = prevention;
         this.usage = usage;
         Indication = indication;
         Contraindication = contraindication;
@@ -106,6 +107,14 @@ public class Vaccine {
 
     public void setNumber_of_inject(int number_of_inject) {
         this.number_of_inject = number_of_inject;
+    }
+
+    public String getPrevention() {
+        return prevention;
+    }
+
+    public void setPrevention(String prevention) {
+        this.prevention = prevention;
     }
 
     public String getUsage() {

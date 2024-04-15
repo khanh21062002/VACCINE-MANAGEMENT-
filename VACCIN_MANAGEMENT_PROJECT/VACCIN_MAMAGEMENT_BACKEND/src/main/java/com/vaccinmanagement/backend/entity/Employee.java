@@ -16,8 +16,10 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.Builder;
+import lombok.Data;
 
 @Entity
+@Data
 @Builder
 @Table(name = "employee")
 public class Employee {
@@ -25,7 +27,7 @@ public class Employee {
 	@Id
 	@Column(name = "employee_id", unique = true)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int employee_id;
+	private Integer employee_id;
 	
 	@Column(name = "employee_name", length = 255, nullable = false, unique = true)
 	private String employee_name;
@@ -34,7 +36,7 @@ public class Employee {
 	@Temporal(TemporalType.DATE)
 	private Date date_of_birth;
 	
-    @Column(name = "Gender")
+    @Column(name = "gender")
     @Enumerated(value = EnumType.STRING)
     private Gender gender;
     

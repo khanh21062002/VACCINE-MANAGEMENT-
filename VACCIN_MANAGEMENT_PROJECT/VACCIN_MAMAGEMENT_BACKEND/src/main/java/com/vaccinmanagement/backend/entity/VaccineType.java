@@ -3,7 +3,7 @@ package com.vaccinmanagement.backend.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "VaccineType")
+@Table(name = "vaccine_type")
 public class VaccineType {
 	
 	@Id
@@ -22,24 +22,21 @@ public class VaccineType {
 	@Column(name = "vaccine_type_image")
 	private String vaccine_type_image;
 
-	@OneToOne(mappedBy = "VaccineType",cascade = CascadeType.ALL,orphanRemoval = true)
-	private Vaccine vaccine;
+//	@OneToOne(mappedBy = "vaccine_type",cascade = CascadeType.ALL,orphanRemoval = true)
+//	private Vaccine vaccine;
 
 	public VaccineType() {
 
 	}
 
-	public VaccineType(String vaccine_type_code, String vaccine_type_name, boolean active, String description,
-			String vaccine_type_image) {
-		super();
+	public VaccineType(String vaccine_type_code, String vaccine_type_name, boolean active, String description, String vaccine_type_image, Vaccine vaccine) {
 		this.vaccine_type_code = vaccine_type_code;
 		this.vaccine_type_name = vaccine_type_name;
 		this.active = active;
 		this.description = description;
 		this.vaccine_type_image = vaccine_type_image;
+//		this.vaccine = vaccine;
 	}
-
-
 
 	public String getVaccine_type_code() {
 		return vaccine_type_code;
@@ -80,7 +77,12 @@ public class VaccineType {
 	public void setVaccine_type_image(String vaccine_type_image) {
 		this.vaccine_type_image = vaccine_type_image;
 	}
-	
-	
-	
+
+//	public Vaccine getVaccine() {
+//		return vaccine;
+//	}
+//
+//	public void setVaccine(Vaccine vaccine) {
+//		this.vaccine = vaccine;
+//	}
 }

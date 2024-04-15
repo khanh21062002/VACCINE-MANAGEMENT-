@@ -20,7 +20,7 @@ public class Customer {
     @Column(name = "date_of_birth")
     private Date date_of_birth;
 
-    @Column(name = "Gender")
+    @Column(name = "gender")
     @Enumerated(value = EnumType.STRING)
     private Gender gender;
 

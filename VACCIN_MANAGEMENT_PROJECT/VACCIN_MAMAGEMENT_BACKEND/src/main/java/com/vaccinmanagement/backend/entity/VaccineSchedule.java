@@ -1,13 +1,13 @@
 package com.vaccinmanagement.backend.entity;
 
-import com.vaccinmanagement.backend.enums.Gender;
+
 import com.vaccinmanagement.backend.enums.Status;
 import jakarta.persistence.*;
 
 import java.util.Date;
 
 @Entity
-@Table(name = "VaccineSchedule")
+@Table(name = "vaccine_schedule")
 public class VaccineSchedule {
 
     @Id
@@ -19,10 +19,10 @@ public class VaccineSchedule {
     @JoinColumn(name = "vaccine_id",insertable = false, updatable = false)
     private Vaccine vaccine;
 
-    @Column(name = "Calendar_From", nullable = false)
+    @Column(name = "calendar_from", nullable = false)
     private Date from;
 
-    @Column(name = "Calendar_To", nullable = false)
+    @Column(name = "calendar_to", nullable = false)
     private Date to;
 
     @Column(name = "place", length = 255, nullable = false)
@@ -37,13 +37,14 @@ public class VaccineSchedule {
 
     public VaccineSchedule() {}
 
-    public VaccineSchedule(int idVaccineSchedule, Vaccine vaccine, Date from, Date to, String place, String note) {
+    public VaccineSchedule(int idVaccineSchedule, Vaccine vaccine, Date from, Date to, String place, String note, Status status) {
         this.idVaccineSchedule = idVaccineSchedule;
         this.vaccine = vaccine;
         this.from = from;
         this.to = to;
         this.place = place;
         this.note = note;
+        this.status = status;
     }
 
     public int getIdVaccineSchedule() {
@@ -92,5 +93,13 @@ public class VaccineSchedule {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }

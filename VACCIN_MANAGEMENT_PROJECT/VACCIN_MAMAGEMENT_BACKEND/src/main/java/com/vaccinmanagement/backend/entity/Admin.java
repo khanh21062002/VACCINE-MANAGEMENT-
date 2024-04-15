@@ -16,13 +16,13 @@ public class Admin {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer admin_id;
 	
-	@Column(name = "AdminName" , nullable = false, length = 255, unique = true)
+	@Column(name = "adminName" , nullable = false, length = 255, unique = true)
 	private String admin_name;
 	
     @Column(name = "email", nullable = false, length = 255, unique = true)
     private String email;
 	
-	@Column(name = "Password", nullable = false, length = 255)
+	@Column(name = "password", nullable = false, length = 255)
 	private String password;
 
 	public Admin() {

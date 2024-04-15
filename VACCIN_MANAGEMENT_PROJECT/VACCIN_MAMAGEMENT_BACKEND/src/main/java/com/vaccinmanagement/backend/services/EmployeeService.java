@@ -2,9 +2,9 @@ package com.vaccinmanagement.backend.services;
 
 import com.vaccinmanagement.backend.DTO.RequestDTO.AddEmployeeDTO;
 import com.vaccinmanagement.backend.DTO.RequestDTO.UpdateEmployeeDTO;
+import com.vaccinmanagement.backend.DTO.ResponseDTO.EmployeeDTO;
 import com.vaccinmanagement.backend.Repositories.EmployeeRepository;
 import com.vaccinmanagement.backend.entity.Employee;
-import com.vaccinmanagement.backend.enums.Gender;
 import com.vaccinmanagement.backend.transformers.EmployeeTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,8 +28,8 @@ public class EmployeeService {
         this.employeeRepository.deleteById(employee_id);
     }
 
-    public Employee getEmployeeById(int employee_id) throws Exception {
-        Optional<Employee> employeeOpt = employeeRepository.findById(employee_id);
+    public EmployeeDTO getEmployeeById(Integer employee_id) throws Exception {
+        Optional<EmployeeDTO> employeeOpt = employeeRepository.findByEmployeeId(employee_id);
 
         if (employeeOpt.isEmpty()){
             throw new Exception("Employee not found");
@@ -37,8 +37,8 @@ public class EmployeeService {
         return employeeOpt.get();
     }
 
-    public Employee getEmployeeByEmail(String email_employee) throws Exception {
-        Optional<Employee> employeeOpt = employeeRepository.findByEmailEmployee(email_employee);
+    public EmployeeDTO getEmployeeByEmail(String email_employee) throws Exception {
+        Optional<EmployeeDTO> employeeOpt = employeeRepository.findByEmailEmployee(email_employee);
         if (employeeOpt.isEmpty()){
             throw new Exception("Employee not found");
         }
@@ -58,10 +58,6 @@ public class EmployeeService {
         }
         if(employeeDTO.getEmail_employee() == null){
             throw new Exception("Email employee is null");
-        }
-        Optional<Employee> employeeOpt = employeeRepository.findByEmailEmployee(employeeDTO.getEmail_employee());
-        if(employeeOpt.isPresent()){
-            throw new Exception("Employee already exists");
         }
         employeeRepository.save(employee);
         return "Employee has been added successfully";
@@ -84,7 +80,7 @@ public class EmployeeService {
         return "Employee has been updated successfully";
     }
 
-    public String deleteEmployeeById(int employee_id) throws Exception {
+    public String deleteEmployeeById(Integer employee_id) throws Exception {
         Optional<Employee> employeeOpt = employeeRepository.findById(employee_id);
         if (employeeOpt.isEmpty()){
             throw new Exception("Employee not found");
