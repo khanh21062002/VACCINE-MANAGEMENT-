@@ -14,10 +14,10 @@ public class Admin {
 	@Id
 	@Column(name = "admin_id", unique = true)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer admin_id;
+	private Integer adminId;
 	
 	@Column(name = "adminName" , nullable = false, length = 255, unique = true)
-	private String admin_name;
+	private String adminName;
 	
     @Column(name = "email", nullable = false, length = 255, unique = true)
     private String email;
@@ -29,28 +29,27 @@ public class Admin {
 
 	}
 
-	public Admin(Integer admin_id, String admin_name, String email, String password) {
-		super();
-		this.admin_id = admin_id;
-		this.admin_name = admin_name;
+	public Admin(Integer adminId, String adminName, String email, String password) {
+		this.adminId = adminId;
+		this.adminName = adminName;
 		this.email = email;
 		this.password = password;
 	}
 
-	public Integer getAdmin_id() {
-		return admin_id;
+	public Integer getAdminId() {
+		return adminId;
 	}
 
-	public void setAdmin_id(Integer admin_id) {
-		this.admin_id = admin_id;
+	public void setAdminId(Integer adminId) {
+		this.adminId = adminId;
 	}
 
-	public String getAdmin_name() {
-		return admin_name;
+	public String getAdminName() {
+		return adminName;
 	}
 
-	public void setAdmin_name(String admin_name) {
-		this.admin_name = admin_name;
+	public void setAdminName(String adminName) {
+		this.adminName = adminName;
 	}
 
 	public String getEmail() {
@@ -68,6 +67,4 @@ public class Admin {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
 }

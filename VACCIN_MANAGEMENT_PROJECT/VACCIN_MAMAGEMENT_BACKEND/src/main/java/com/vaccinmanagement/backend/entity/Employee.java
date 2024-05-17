@@ -15,92 +15,93 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "employee")
 @Data
 @Builder
-@Table(name = "employee")
+//@AllArgsConstructor
+//@NoArgsConstructor
 public class Employee {
 	
 	@Id
 	@Column(name = "employee_id", unique = true)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer employee_id;
+	private Integer employeeId;
 	
 	@Column(name = "employee_name", length = 255, nullable = false, unique = true)
-	private String employee_name;
+	private String employeeName;
 	
 	@Column(name = "date_of_birth", nullable = false)
 	@Temporal(TemporalType.DATE)
-	private Date date_of_birth;
+	private Date dateOfBirth;
 	
     @Column(name = "gender")
     @Enumerated(value = EnumType.STRING)
     private Gender gender;
     
     @Column(name = "phone_number" , length = 11, nullable = false, unique = true)
-    private String phone_number;
+    private String phoneNumber;
     
     @Column(name = "address_employee", length = 255 , nullable = false, unique = true)
-    private String address_employee;
+    private String addressEmployee;
     
-    @Column(name = "email_employee", length = 255, nullable = false, unique = true)
-    private String email_employee;
+    @Column(name = "employee_email", length = 255, nullable = false, unique = true)
+    private String employeeEmail;
     
     @Column(name = "working_place", length = 255)
-    private String working_place;
+    private String workingPlace;
     
     @Column(name = "position")
     @Enumerated(value = EnumType.STRING)
     private Position position;
     
     @Column(name = "employee_image")
-    private String employee_image;
+    private String employeeImage;
     
     public Employee() {
-    	
+
     }
 
-	public Employee(Integer employee_id, String employee_name, Date date_of_birth, Gender gender, String phone_number,
-			String address_employee, String email_employee, String working_place, Position position,
-			String employee_image) {
-		super();
-		this.employee_id = employee_id;
-		this.employee_name = employee_name;
-		this.date_of_birth = date_of_birth;
+	public Employee(Integer employeeId, String employeeName, Date dateOfBirth, Gender gender, String phoneNumber, String addressEmployee, String employeeEmail, String workingPlace, Position position, String employeeImage) {
+		this.employeeId = employeeId;
+		this.employeeName = employeeName;
+		this.dateOfBirth = dateOfBirth;
 		this.gender = gender;
-		this.phone_number = phone_number;
-		this.address_employee = address_employee;
-		this.email_employee = email_employee;
-		this.working_place = working_place;
+		this.phoneNumber = phoneNumber;
+		this.addressEmployee = addressEmployee;
+		this.employeeEmail = employeeEmail;
+		this.workingPlace = workingPlace;
 		this.position = position;
-		this.employee_image = employee_image;
+		this.employeeImage = employeeImage;
 	}
 
-	public Integer getEmployee_id() {
-		return employee_id;
+	public Integer getEmployeeId() {
+		return employeeId;
 	}
 
-	public void setEmployee_id(Integer employee_id) {
-		this.employee_id = employee_id;
+	public void setEmployeeId(Integer employeeId) {
+		this.employeeId = employeeId;
 	}
 
-	public String getEmployee_name() {
-		return employee_name;
+	public String getEmployeeName() {
+		return employeeName;
 	}
 
-	public void setEmployee_name(String employee_name) {
-		this.employee_name = employee_name;
+	public void setEmployeeName(String employeeName) {
+		this.employeeName = employeeName;
 	}
 
-	public Date getDate_of_birth() {
-		return date_of_birth;
+	public Date getDateOfBirth() {
+		return dateOfBirth;
 	}
 
-	public void setDate_of_birth(Date date_of_birth) {
-		this.date_of_birth = date_of_birth;
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
 	public Gender getGender() {
@@ -111,36 +112,36 @@ public class Employee {
 		this.gender = gender;
 	}
 
-	public String getPhone_number() {
-		return phone_number;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
 
-	public void setPhone_number(String phone_number) {
-		this.phone_number = phone_number;
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
-	public String getAddress_employee() {
-		return address_employee;
+	public String getAddressEmployee() {
+		return addressEmployee;
 	}
 
-	public void setAddress_employee(String address_employee) {
-		this.address_employee = address_employee;
+	public void setAddressEmployee(String addressEmployee) {
+		this.addressEmployee = addressEmployee;
 	}
 
-	public String getEmail_employee() {
-		return email_employee;
+	public String getEmployeeEmail() {
+		return employeeEmail;
 	}
 
-	public void setEmail_employee(String email_employee) {
-		this.email_employee = email_employee;
+	public void setEmployeeEmail(String employeeEmail) {
+		this.employeeEmail = employeeEmail;
 	}
 
-	public String getWorking_place() {
-		return working_place;
+	public String getWorkingPlace() {
+		return workingPlace;
 	}
 
-	public void setWorking_place(String working_place) {
-		this.working_place = working_place;
+	public void setWorkingPlace(String workingPlace) {
+		this.workingPlace = workingPlace;
 	}
 
 	public Position getPosition() {
@@ -151,17 +152,11 @@ public class Employee {
 		this.position = position;
 	}
 
-	public String getEmployee_image() {
-		return employee_image;
+	public String getEmployeeImage() {
+		return employeeImage;
 	}
 
-	public void setEmployee_image(String employee_image) {
-		this.employee_image = employee_image;
+	public void setEmployeeImage(String employeeImage) {
+		this.employeeImage = employeeImage;
 	}
-    
-    
-
-    
-    
-	
 }

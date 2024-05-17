@@ -10,121 +10,121 @@ public class VaccinationResult {
 
     @Id
     @Column(name = "id_vaccination_result")
-    private int id_vaccination_result;
+    private int idVaccinationResult;
 
     @OneToOne
     @JoinColumn(name = "id_customer_vaccination_result")
-    private Customer id_customer_vaccination_result;
+    private Customer idCustomerVaccinationResult;
 
     @OneToOne
     @JoinColumn(name = "customer_name_vaccination", nullable = false)
-    private Customer customer_name_vaccination;
+    private Customer customerNameVaccination;
 
     @OneToOne
     @JoinColumn(name = "dob_customer_vaccination", nullable = false)
-    private Customer dob_customer_vaccination;
+    private Customer dobCustomerVaccination;
 
     @OneToOne
     @JoinColumn(name = "vaccine_type_of_customer")
-    private VaccineType vaccine_type;
+    private VaccineType vaccineType;
 
     @OneToOne
     @JoinColumn(name = "prevention_vaccination_result", nullable = false)
-    private Customer prevention_vaccination_result;
+    private Customer preventionVaccinationResult;
 
     @Column(name = "injection_customer", nullable = false, length =10)
-    private int injection_customer;
+    private int injectionCustomer;
 
     @Column(name = "date_of_injection", nullable = false, length = 50)
-    private Date date_of_injection;
+    private Date dateOfInjection;
 
     @Column(name = "next_injection_appointment", nullable = false, length = 50)
-    private Date next_injection_appointment;
+    private Date nextInjectionAppointment;
 
     public VaccinationResult() {
     }
 
-    public VaccinationResult(int id_vaccination_result, Customer id_customer_vaccination_result, Customer customer_name_vaccination, Customer dob_customer_vaccination, VaccineType vaccine_type, Customer prevention_vaccination_result, int injection_customer, Date date_of_injection, Date next_injection_appointment) {
-        this.id_vaccination_result = id_vaccination_result;
-        this.id_customer_vaccination_result = id_customer_vaccination_result;
-        this.customer_name_vaccination = customer_name_vaccination;
-        this.dob_customer_vaccination = dob_customer_vaccination;
-        this.vaccine_type = vaccine_type;
-        this.prevention_vaccination_result = prevention_vaccination_result;
-        this.injection_customer = injection_customer;
-        this.date_of_injection = date_of_injection;
-        this.next_injection_appointment = next_injection_appointment;
+    public VaccinationResult(int idVaccinationResult, Customer idCustomerVaccinationResult, Customer customerNameVaccination, Customer dobCustomerVaccination, VaccineType vaccineType, Customer preventionVaccinationResult, int injectionCustomer, Date dateOfInjection, Date nextInjectionAppointment) {
+        this.idVaccinationResult = idVaccinationResult;
+        this.idCustomerVaccinationResult = idCustomerVaccinationResult;
+        this.customerNameVaccination = customerNameVaccination;
+        this.dobCustomerVaccination = dobCustomerVaccination;
+        this.vaccineType = vaccineType;
+        this.preventionVaccinationResult = preventionVaccinationResult;
+        this.injectionCustomer = injectionCustomer;
+        this.dateOfInjection = dateOfInjection;
+        this.nextInjectionAppointment = nextInjectionAppointment;
     }
 
-    public int getId_vaccination_result() {
-        return id_vaccination_result;
+    public int getIdVaccinationResult() {
+        return idVaccinationResult;
     }
 
-    public void setId_vaccination_result(int id_vaccination_result) {
-        this.id_vaccination_result = id_vaccination_result;
+    public void setIdVaccinationResult(int idVaccinationResult) {
+        this.idVaccinationResult = idVaccinationResult;
     }
 
-    public Customer getId_customer_vaccination_result() {
-        return id_customer_vaccination_result;
+    public Customer getIdCustomerVaccinationResult() {
+        return idCustomerVaccinationResult;
     }
 
-    public void setId_customer_vaccination_result(Customer id_customer_vaccination_result) {
-        this.id_customer_vaccination_result = id_customer_vaccination_result;
+    public void setIdCustomerVaccinationResult(Customer idCustomerVaccinationResult) {
+        this.idCustomerVaccinationResult = idCustomerVaccinationResult;
     }
 
-    public Customer getCustomer_name_vaccination() {
-        return customer_name_vaccination;
+    public Customer getCustomerNameVaccination() {
+        return customerNameVaccination;
     }
 
-    public void setCustomer_name_vaccination(Customer customer_name_vaccination) {
-        this.customer_name_vaccination = customer_name_vaccination;
+    public void setCustomerNameVaccination(Customer customerNameVaccination) {
+        this.customerNameVaccination = customerNameVaccination;
     }
 
-    public VaccineType getVaccine_type() {
-        return vaccine_type;
+    public Customer getDobCustomerVaccination() {
+        return dobCustomerVaccination;
     }
 
-    public void setVaccine_type(VaccineType vaccine_type) {
-        this.vaccine_type = vaccine_type;
+    public void setDobCustomerVaccination(Customer dobCustomerVaccination) {
+        this.dobCustomerVaccination = dobCustomerVaccination;
     }
 
-    public Customer getDob_customer_vaccination() {
-        return dob_customer_vaccination;
+    public VaccineType getVaccineType() {
+        return vaccineType;
     }
 
-    public void setDob_customer_vaccination(Customer dob_customer_vaccination) {
-        this.dob_customer_vaccination = dob_customer_vaccination;
+    public void setVaccineType(VaccineType vaccineType) {
+        this.vaccineType = vaccineType;
     }
 
-    public Customer getPrevention_vaccination_result() {
-        return prevention_vaccination_result;
+    public Customer getPreventionVaccinationResult() {
+        return preventionVaccinationResult;
     }
 
-    public void setPrevention_vaccination_result(Customer prevention_vaccination_result) {
-        this.prevention_vaccination_result = prevention_vaccination_result;
+    public void setPreventionVaccinationResult(Customer preventionVaccinationResult) {
+        this.preventionVaccinationResult = preventionVaccinationResult;
     }
 
-    public int getInjection_customer() {
-        return injection_customer;
+    public int getInjectionCustomer() {
+        return injectionCustomer;
     }
 
-    public void setInjection_customer(int injection_customer) {
-        this.injection_customer = injection_customer;
+    public void setInjectionCustomer(int injectionCustomer) {
+        this.injectionCustomer = injectionCustomer;
     }
 
-    public Date getDate_of_injection() {
-        return date_of_injection;
+    public Date getDateOfInjection() {
+        return dateOfInjection;
     }
 
-    public void setDate_of_injection(Date date_of_injection) {
-        this.date_of_injection = date_of_injection;
+    public void setDateOfInjection(Date dateOfInjection) {
+        this.dateOfInjection = dateOfInjection;
     }
 
-    public Date getNext_injection_appointment() {
-        return next_injection_appointment;
+    public Date getNextInjectionAppointment() {
+        return nextInjectionAppointment;
     }
 
-    public void setNext_injection_appointment(Date next_injection_appointment) {
-        this.next_injection_appointment = next_injection_appointment;
+    public void setNextInjectionAppointment(Date nextInjectionAppointment) {
+        this.nextInjectionAppointment = nextInjectionAppointment;
     }
 }

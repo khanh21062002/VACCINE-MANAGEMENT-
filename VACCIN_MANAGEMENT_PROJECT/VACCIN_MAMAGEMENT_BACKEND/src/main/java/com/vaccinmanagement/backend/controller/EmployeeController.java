@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/employees")
+@RequestMapping("/employee")
 public class EmployeeController {
     @Autowired
     EmployeeService employeeService;
@@ -31,13 +31,13 @@ public class EmployeeController {
     @GetMapping("/getAllEmployee")
     public ResponseEntity<List<Employee>> getAllEmployees() {
         try{
-            List<Employee> employees = new ArrayList<>();
+            List<Employee> employeesDto = employeeService.getAllEmployees();
 
-            if (employees.isEmpty()){
-                return new ResponseEntity<>(employees, HttpStatus.NO_CONTENT);
+            if (employeesDto.isEmpty()){
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
             else{
-                return new ResponseEntity<>(employees, HttpStatus.OK);
+                return new ResponseEntity<>(employeesDto, HttpStatus.OK);
             }
         }catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -45,31 +45,31 @@ public class EmployeeController {
     }
 
     @GetMapping("/getEmployeeById/{employeeId}")
-    public ResponseEntity<String> getEmployeeById(@PathVariable Integer employeeId) {
+    public ResponseEntity<Object> getEmployeeById(@PathVariable("employeeId") Integer employeeId) {
         try {
-            EmployeeDTO employeeDTO = employeeService.getEmployeeById(employeeId);
-            return new ResponseEntity<String>(employeeDTO.getEmployee_name(), HttpStatus.FOUND);
+            Employee employee = employeeService.getEmployeeById(employeeId);
+            return new ResponseEntity<Object>(employee, HttpStatus.FOUND);
         }
         catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<Object>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 
     @GetMapping("/getEmployeeByEmail/{email_employee}")
-    public ResponseEntity<String> getEmployeeByEmail(@PathVariable String email_employee) {
+    public ResponseEntity<Object> getEmployeeByEmail(@PathVariable String email_employee) {
         try {
-            EmployeeDTO employeeDTO = employeeService.getEmployeeByEmail(email_employee);
-            return new ResponseEntity<>(employeeDTO.getEmployee_name(), HttpStatus.FOUND);
+            Employee employee = employeeService.getEmployeeByEmail(email_employee);
+            return new ResponseEntity<>(employee, HttpStatus.FOUND);
         }
         catch (Exception e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 
-    @PutMapping("/updateEmployee")
-    public ResponseEntity<String> updateEmployee(@RequestBody UpdateEmployeeDTO updateEmployeeDTO) {
+    @PutMapping("/updateEmployee/{employeeId}")
+    public ResponseEntity<String> updateEmployeeById(@PathVariable Integer employeeId,@RequestBody UpdateEmployeeDTO updateEmployeeDTO) {
         try {
-            String result = employeeService.updateEmployee(updateEmployeeDTO);
+            String result = employeeService.updateEmployeeById(employeeId,updateEmployeeDTO);
             return new ResponseEntity<>(result, HttpStatus.CREATED);
         }catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);

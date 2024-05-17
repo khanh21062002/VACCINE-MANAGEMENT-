@@ -1,72 +1,77 @@
 package com.vaccinmanagement.backend.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Data;
 
+import java.util.Collection;
 import java.util.Date;
 
 @Entity
 @Table(name = "vaccine")
+@Data
+@Builder
 public class Vaccine {
 
     @Id
-    @Column(name = "vaccine_id", length = 10, nullable = false, unique = true)
+    @Column(name = "vaccine_id", length = 10, unique = true, nullable = false)
     private String id;
 
     @Column(name = "active",nullable = false, unique = true)
     private boolean active;
 
     @Column(name = "vaccine_name",length = 255, nullable = false, unique = true)
-    private String vaccine_name;
+    private String vaccineName;
 
     @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
     @JoinColumn(name = "vaccine_type_code",insertable = false, updatable = false)
     private VaccineType vaccineType;
 
     @Column(name = "number_of_inject", nullable = false, unique = true)
-    private int number_of_inject;
+    private int numberOfInject;
 
     @Column(name = "prevention", nullable = false, length = 255)
     private String prevention;
 
-    @Column(name = "usage",length = 255)
+    @Column(name = "usage_description", nullable = false,length = 255)
     private String usage;
 
-    @Column(name = "indication", length = 255)
-    private String Indication;
+    @Column(name = "indication", nullable = false, length = 255)
+    private String indication;
 
-    @Column(name = "contraindication", length = 255)
-    private String Contraindication;
+    @Column(name = "contraindication", nullable = false, length = 255)
+    private String contraindication;
 
     @Column(name = "next_time_start")
-    private Date time_of_beginning_next_injection;
+    private Date timeOfBeginningNextInjection;
 
     @Column(name = "next_time")
-    private Date time_of_ending_next_injection;
+    private Date timeOfEndingNextInjection;
 
-    @Column(name = "origin", length = 50)
+    @Column(name = "origin", nullable = false, length = 50)
     private String origin;
 
-    @OneToOne(mappedBy = "vaccine",cascade = CascadeType.ALL,orphanRemoval = true)
-    private VaccineSchedule vaccine_schedule;
+    @OneToMany(mappedBy = "vaccine",cascade = CascadeType.ALL,orphanRemoval = true)
+    private Collection<VaccineSchedule> vaccineSchedule;
 
     public Vaccine() {
 
     }
 
-    public Vaccine(String id, boolean active, String vaccine_name, VaccineType vaccineType, int number_of_inject, String prevention, String usage, String indication, String contraindication, Date time_of_beginning_next_injection, Date time_of_ending_next_injection, String origin, VaccineSchedule vaccine_schedule) {
+    public Vaccine(String id, boolean active, String vaccineName, VaccineType vaccineType, int numberOfInject, String prevention, String usage, String indication, String contraindication, Date timeOfBeginningNextInjection, Date timeOfEndingNextInjection, String origin, Collection<VaccineSchedule> vaccineSchedule) {
         this.id = id;
         this.active = active;
-        this.vaccine_name = vaccine_name;
+        this.vaccineName = vaccineName;
         this.vaccineType = vaccineType;
-        this.number_of_inject = number_of_inject;
+        this.numberOfInject = numberOfInject;
         this.prevention = prevention;
         this.usage = usage;
-        Indication = indication;
-        Contraindication = contraindication;
-        this.time_of_beginning_next_injection = time_of_beginning_next_injection;
-        this.time_of_ending_next_injection = time_of_ending_next_injection;
+        this.indication = indication;
+        this.contraindication = contraindication;
+        this.timeOfBeginningNextInjection = timeOfBeginningNextInjection;
+        this.timeOfEndingNextInjection = timeOfEndingNextInjection;
         this.origin = origin;
-        this.vaccine_schedule = vaccine_schedule;
+        this.vaccineSchedule = vaccineSchedule;
     }
 
     public String getId() {
@@ -85,12 +90,12 @@ public class Vaccine {
         this.active = active;
     }
 
-    public String getVaccine_name() {
-        return vaccine_name;
+    public String getVaccineName() {
+        return vaccineName;
     }
 
-    public void setVaccine_name(String vaccine_name) {
-        this.vaccine_name = vaccine_name;
+    public void setVaccineName(String vaccineName) {
+        this.vaccineName = vaccineName;
     }
 
     public VaccineType getVaccineType() {
@@ -101,12 +106,12 @@ public class Vaccine {
         this.vaccineType = vaccineType;
     }
 
-    public int getNumber_of_inject() {
-        return number_of_inject;
+    public int getNumberOfInject() {
+        return numberOfInject;
     }
 
-    public void setNumber_of_inject(int number_of_inject) {
-        this.number_of_inject = number_of_inject;
+    public void setNumberOfInject(int numberOfInject) {
+        this.numberOfInject = numberOfInject;
     }
 
     public String getPrevention() {
@@ -126,35 +131,35 @@ public class Vaccine {
     }
 
     public String getIndication() {
-        return Indication;
+        return indication;
     }
 
     public void setIndication(String indication) {
-        Indication = indication;
+        this.indication = indication;
     }
 
     public String getContraindication() {
-        return Contraindication;
+        return contraindication;
     }
 
     public void setContraindication(String contraindication) {
-        Contraindication = contraindication;
+        this.contraindication = contraindication;
     }
 
-    public Date getTime_of_beginning_next_injection() {
-        return time_of_beginning_next_injection;
+    public Date getTimeOfBeginningNextInjection() {
+        return timeOfBeginningNextInjection;
     }
 
-    public void setTime_of_beginning_next_injection(Date time_of_beginning_next_injection) {
-        this.time_of_beginning_next_injection = time_of_beginning_next_injection;
+    public void setTimeOfBeginningNextInjection(Date timeOfBeginningNextInjection) {
+        this.timeOfBeginningNextInjection = timeOfBeginningNextInjection;
     }
 
-    public Date getTime_of_ending_next_injection() {
-        return time_of_ending_next_injection;
+    public Date getTimeOfEndingNextInjection() {
+        return timeOfEndingNextInjection;
     }
 
-    public void setTime_of_ending_next_injection(Date time_of_ending_next_injection) {
-        this.time_of_ending_next_injection = time_of_ending_next_injection;
+    public void setTimeOfEndingNextInjection(Date timeOfEndingNextInjection) {
+        this.timeOfEndingNextInjection = timeOfEndingNextInjection;
     }
 
     public String getOrigin() {
@@ -165,11 +170,11 @@ public class Vaccine {
         this.origin = origin;
     }
 
-    public VaccineSchedule getVaccine_schedule() {
-        return vaccine_schedule;
+    public Collection<VaccineSchedule> getVaccineSchedule() {
+        return vaccineSchedule;
     }
 
-    public void setVaccine_schedule(VaccineSchedule vaccine_schedule) {
-        this.vaccine_schedule = vaccine_schedule;
+    public void setVaccineSchedule(Collection<VaccineSchedule> vaccineSchedule) {
+        this.vaccineSchedule = vaccineSchedule;
     }
 }

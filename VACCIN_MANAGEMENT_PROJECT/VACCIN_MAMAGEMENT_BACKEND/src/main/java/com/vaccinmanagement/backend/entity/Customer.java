@@ -12,23 +12,23 @@ public class Customer {
     @Id
     @Column(name = "customer_id", unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer customer_id;
+    private Integer customerId;
 
     @Column(name = "fullname_customer", nullable = false, length = 50)
     private String fullName;
 
     @Column(name = "date_of_birth")
-    private Date date_of_birth;
+    private Date dateOfBirth;
 
     @Column(name = "gender")
     @Enumerated(value = EnumType.STRING)
     private Gender gender;
 
     @Column(name = "indentity_card", nullable = false, length = 10, unique = true)
-    private String identity_card;
+    private String identityCard;
 
     @Column(name = "customer_address", nullable = false, length = 100)
-    private String customer_address;
+    private String customerAddress;
 
     @Column(name = "username_customer", nullable = false, length = 50, unique = true)
     private String user;
@@ -44,25 +44,25 @@ public class Customer {
 
     public Customer() {}
 
-    public Customer(Integer customer_id, String fullName, Date date_of_birth, Gender gender, String identity_card, String customer_address, String user, String password, String email, String phoneNumber) {
-        this.customer_id = customer_id;
+    public Customer(Integer customerId, String fullName, Date dateOfBirth, Gender gender, String identityCard, String customerAddress, String user, String password, String email, String phoneNumber) {
+        this.customerId = customerId;
         this.fullName = fullName;
-        this.date_of_birth = date_of_birth;
+        this.dateOfBirth = dateOfBirth;
         this.gender = gender;
-        this.identity_card = identity_card;
-        this.customer_address = customer_address;
+        this.identityCard = identityCard;
+        this.customerAddress = customerAddress;
         this.user = user;
         this.password = password;
         this.email = email;
         this.phoneNumber = phoneNumber;
     }
 
-    public Integer getCustomer_id() {
-        return customer_id;
+    public Integer getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer_id(Integer customer_id) {
-        this.customer_id = customer_id;
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
     }
 
     public String getFullName() {
@@ -73,12 +73,12 @@ public class Customer {
         this.fullName = fullName;
     }
 
-    public Date getDate_of_birth() {
-        return date_of_birth;
+    public Date getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setDate_of_birth(Date date_of_birth) {
-        this.date_of_birth = date_of_birth;
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public Gender getGender() {
@@ -89,20 +89,20 @@ public class Customer {
         this.gender = gender;
     }
 
-    public String getIdentity_card() {
-        return identity_card;
+    public String getIdentityCard() {
+        return identityCard;
     }
 
-    public void setIdentity_card(String identity_card) {
-        this.identity_card = identity_card;
+    public void setIdentityCard(String identityCard) {
+        this.identityCard = identityCard;
     }
 
-    public String getCustomer_address() {
-        return customer_address;
+    public String getCustomerAddress() {
+        return customerAddress;
     }
 
-    public void setCustomer_address(String customer_address) {
-        this.customer_address = customer_address;
+    public void setCustomerAddress(String customerAddress) {
+        this.customerAddress = customerAddress;
     }
 
     public String getUser() {

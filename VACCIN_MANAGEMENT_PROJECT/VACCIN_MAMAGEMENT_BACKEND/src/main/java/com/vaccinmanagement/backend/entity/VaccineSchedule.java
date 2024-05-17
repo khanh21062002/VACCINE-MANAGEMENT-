@@ -11,12 +11,11 @@ import java.util.Date;
 public class VaccineSchedule {
 
     @Id
-    @Column(name = "id_vaccine_schedule")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_vaccine_schedule",nullable = false, unique = true)
     private int idVaccineSchedule;
 
-    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
-    @JoinColumn(name = "vaccine_id",insertable = false, updatable = false)
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "vaccine_id",insertable = false)
     private Vaccine vaccine;
 
     @Column(name = "calendar_from", nullable = false)

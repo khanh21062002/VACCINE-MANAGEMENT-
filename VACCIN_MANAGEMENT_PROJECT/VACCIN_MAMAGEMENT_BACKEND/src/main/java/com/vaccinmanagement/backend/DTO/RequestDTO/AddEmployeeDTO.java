@@ -12,32 +12,32 @@ import java.util.Date;
 public class AddEmployeeDTO {
 
     @NotBlank(message = "please input employee_id")
-    private int employee_id;
+    private int employeeId;
 
     @NotBlank(message = "please input Employee Name")
     @Size(max = 255, message = "Max length is 255 char , please try again")
-    private String employee_name;
+    private String employeeName;
 
     private Gender gender;
 
     @NotBlank(message = "please input Date of birth")
-    private Date date_of_birth;
+    private Date dateOfBirth;
 
     @NotBlank(message = "please input Phone Number")
     @Size(max = 11, message = "Max length is 11 char , please try again")
-    private String phone_number;
+    private String phoneNumber;
 
     @NotBlank(message = "please input Address Employee")
     @Size(max = 255, message = "Max length is 255 char , please try again")
-    private String address_employee;
+    private String addressEmployee;
 
     @NotBlank(message = "please input Email Employee")
     @Size(max = 255, message = "Max length is 255 char , please try again")
-    private String email_employee;
+    private String employeeEmail;
 
-    private String working_place_employee;
+    private String workingPlace;
 
     private Position position;
 
-    private String employee_image;
+    private String employeeImage;
 }

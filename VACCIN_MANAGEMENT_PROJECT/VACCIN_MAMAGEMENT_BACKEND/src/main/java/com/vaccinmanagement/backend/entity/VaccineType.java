@@ -8,10 +8,10 @@ public class VaccineType {
 	
 	@Id
 	@Column(name = "vaccine_type_code", length = 8, unique = true, nullable = false )
-	private String vaccine_type_code;
+	private String vaccineTypeCode;
 	
 	@Column(name = "vaccine_type_name", length = 255, nullable = false, unique = true)
-	private String vaccine_type_name;
+	private String vaccineTypeName;
 	
 	@Column(name = "active")
 	private boolean active;
@@ -20,38 +20,38 @@ public class VaccineType {
 	private String description;
 	
 	@Column(name = "vaccine_type_image")
-	private String vaccine_type_image;
+	private String vaccineTypeImage;
 
-//	@OneToOne(mappedBy = "vaccine_type",cascade = CascadeType.ALL,orphanRemoval = true)
-//	private Vaccine vaccine;
+	@OneToOne(mappedBy = "vaccineType",cascade = CascadeType.ALL,orphanRemoval = true)
+	private Vaccine vaccine;
 
 	public VaccineType() {
 
 	}
 
-	public VaccineType(String vaccine_type_code, String vaccine_type_name, boolean active, String description, String vaccine_type_image, Vaccine vaccine) {
-		this.vaccine_type_code = vaccine_type_code;
-		this.vaccine_type_name = vaccine_type_name;
+	public VaccineType(String vaccineTypeCode, String vaccineTypeName, boolean active, String description, String vaccineTypeImage, Vaccine vaccine) {
+		this.vaccineTypeCode = vaccineTypeCode;
+		this.vaccineTypeName = vaccineTypeName;
 		this.active = active;
 		this.description = description;
-		this.vaccine_type_image = vaccine_type_image;
-//		this.vaccine = vaccine;
+		this.vaccineTypeImage = vaccineTypeImage;
+		this.vaccine = vaccine;
 	}
 
-	public String getVaccine_type_code() {
-		return vaccine_type_code;
+	public String getVaccineTypeCode() {
+		return vaccineTypeCode;
 	}
 
-	public void setVaccine_type_code(String vaccine_type_code) {
-		this.vaccine_type_code = vaccine_type_code;
+	public void setVaccineTypeCode(String vaccineTypeCode) {
+		this.vaccineTypeCode = vaccineTypeCode;
 	}
 
-	public String getVaccine_type_name() {
-		return vaccine_type_name;
+	public String getVaccineTypeName() {
+		return vaccineTypeName;
 	}
 
-	public void setVaccine_type_name(String vaccine_type_name) {
-		this.vaccine_type_name = vaccine_type_name;
+	public void setVaccineTypeName(String vaccineTypeName) {
+		this.vaccineTypeName = vaccineTypeName;
 	}
 
 	public boolean isActive() {
@@ -70,19 +70,19 @@ public class VaccineType {
 		this.description = description;
 	}
 
-	public String getVaccine_type_image() {
-		return vaccine_type_image;
+	public String getVaccineTypeImage() {
+		return vaccineTypeImage;
 	}
 
-	public void setVaccine_type_image(String vaccine_type_image) {
-		this.vaccine_type_image = vaccine_type_image;
+	public void setVaccineTypeImage(String vaccineTypeImage) {
+		this.vaccineTypeImage = vaccineTypeImage;
 	}
 
-//	public Vaccine getVaccine() {
-//		return vaccine;
-//	}
-//
-//	public void setVaccine(Vaccine vaccine) {
-//		this.vaccine = vaccine;
-//	}
+	public Vaccine getVaccine() {
+		return vaccine;
+	}
+
+	public void setVaccine(Vaccine vaccine) {
+		this.vaccine = vaccine;
+	}
 }

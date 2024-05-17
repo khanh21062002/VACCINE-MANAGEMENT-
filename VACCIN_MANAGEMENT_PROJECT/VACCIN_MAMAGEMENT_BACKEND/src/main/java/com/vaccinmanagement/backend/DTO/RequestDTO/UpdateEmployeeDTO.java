@@ -8,11 +8,9 @@ import java.util.Date;
 
 @Data
 public class UpdateEmployeeDTO {
-    private int employee_id;
-    private String phone_number;
-    private String address_employee;
-    private String email_employee;
-    private String working_place_employee;
+    private String phoneNumber;
+    private String addressEmployee;
+    private String employeeEmail;
+    private String workingPlace;
     private Position position;
-    private String employee_image;
 }
